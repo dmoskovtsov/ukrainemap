@@ -1,10 +1,9 @@
 'use strict';
-
-angular.module('ukrainemapApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+angular.module('ukrainemapApp').controller('TotalController', function ($scope) {
+    $scope.data = [
+        {type: 'Пожертвования', value: 689693}
+        ,
+        {type: 'Заказы', value: 163325}
     ];
-  });
+
+});
