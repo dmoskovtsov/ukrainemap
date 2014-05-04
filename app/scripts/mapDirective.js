@@ -7,8 +7,6 @@ angular.module('ukrainemapApp').directive('map', ["d3", function (d3) {
             }
 
             var radius = 150;
-            var w = 500;
-            var h = 300;
 
             var arc = d3.svg.arc()
                 .innerRadius(radius / 3)
@@ -23,21 +21,29 @@ angular.module('ukrainemapApp').directive('map', ["d3", function (d3) {
 
             var svg = d3.select(element[0])
                 .append("svg")
-                .attr("width", w)
-                .attr("height", h);
+                .attr("width", 300)
+                .attr("height", 400);
 
             var arcs = svg.selectAll("g.arc")
                 .data(pie(data))
                 .enter()
                 .append("g")
-                .attr("class", "arc")
-                .attr("transform", "translate(" + radius + "," + radius + ")");
+                .attr("transform", "translate(" + radius + "," + radius + ")")
 
             arcs.append("path")
                 .attr("fill", function (d, i) {
                     return color(i);
                 })
-                .attr("d", arc);
+                .attr("class", function (d, i) {
+                    return "pie" + i;
+                })
+                .attr("d", arc)
+                .attr("index", function (d, i) {
+                    return i;
+                })
+                .on('mouseover', onMouseOver)
+                .on("mouseout", onMouseOut);
+
 
             arcs.append("text")
                 .attr("transform", function (d) {
@@ -46,32 +52,28 @@ angular.module('ukrainemapApp').directive('map', ["d3", function (d3) {
                 .style('fill', '#ffffff')
                 .attr("text-anchor", "middle")
                 .text(function (d) {
-                    return d.value + ' грн';
+                    return d.value;
                 });
 
-            svg.append('circle')
-                .attr('cx', 150)
-                .attr('cy', 150)
+            var centerGroup = arcs.append('g');
+            centerGroup.append('circle')
                 .attr('r', radius / 3)
                 .style('fill', '#ffd103');
 
-            svg.append("text")
+            centerGroup.append("text")
                 .attr("dy", ".35em")
-                .attr('x', radius)
-                .attr('y', radius)
                 .attr("text-anchor", "middle")
                 .style('fill', '#ffffff')
-                .text('841168  грн');
+                .text('841168');
 
             var legendGroup = svg.append('g');
-
             legendGroup.selectAll("circle")
                 .data(data)
                 .enter()
                 .append("circle")
-                .attr("cx", 350)
+                .attr("cx", 100)
                 .attr("cy", function (d, i) {
-                    return 10 + i * 20;
+                    return  320 + i * 20;
                 })
                 .attr("stroke-width", "1")
                 .style("fill", function (d, i) {
@@ -81,11 +83,14 @@ angular.module('ukrainemapApp').directive('map', ["d3", function (d3) {
                 .attr("color_value", function (d, i) {
                     return color(i);
                 })
-                .attr("index_value", function (d, i) {
-                    return "index-" + i;
+                .attr("index", function (d, i) {
+                    return i;
+                })
+                .attr("color", function (d, i) {
+                    return color(i);
                 })
                 .attr("class", function (d, i) {
-                    return "pie-" + i;
+                    return "pie-legend" + i;
                 })
                 .on('mouseover', onMouseOver)
                 .on("mouseout", onMouseOut);
@@ -94,9 +99,9 @@ angular.module('ukrainemapApp').directive('map', ["d3", function (d3) {
                 .data(data)
                 .enter()
                 .append("text")
-                .attr("x", 360)
+                .attr("x", 110)
                 .attr("y", function (d, i) {
-                    return 14 + i * 20;
+                    return 324 + i * 20;
                 })
                 .attr("fill", function (d, i) {
                     return color(i);
@@ -105,10 +110,10 @@ angular.module('ukrainemapApp').directive('map', ["d3", function (d3) {
                     return color(i);
                 })
                 .attr("index", function (d, i) {
-                    return +i;
+                    return i;
                 })
                 .attr("class", function (d, i) {
-                    return "pie-" + i;
+                    return "pie-legend" + i;
                 })
                 .text(function (d) {
                     return d.type;
@@ -117,19 +122,19 @@ angular.module('ukrainemapApp').directive('map', ["d3", function (d3) {
                 .on("mouseout", onMouseOut);
 
             function onMouseOver() {
-                var arc = d3.select(this);
-                var index = arc.attr("index");
-
-                var selectedLegendBullet = d3.selectAll(".pie-" + index);
-                selectedLegendBullet.style("fill", "Maroon");
+                var eventTarget = d3.select(this);
+                var index = eventTarget.attr("index");
+                d3.selectAll('.pie' + index).style("fill", "#35ca25");
+                d3.selectAll('.pie-legend' + index).style("fill", "#35ca25");
             }
 
             function onMouseOut() {
-                var arc = d3.select(this);
-                var index = arc.attr("index");
-                var selectedArc = d3.selectAll(".pie-" + index);
-                selectedArc.style("fill", selectedArc.attr("color"));
+                var eventTarget = d3.select(this);
+                var index = eventTarget.attr("index");
+                d3.selectAll('.pie' + index).style("fill", color(index));
+                d3.selectAll('.pie-legend' + index).style("fill", color(index));
             }
+
         });
     }
 

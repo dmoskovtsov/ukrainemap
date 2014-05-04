@@ -24,9 +24,10 @@ body {
   padding-bottom: 19px;
 }
 
-div.bar {
-    display: inline-block;
-    width: 20px;
-    height: 75px;
-    background-color: teal;
+.main {
+    display: flex;
+}
+
+.center {
+    text-align: center;
 }
