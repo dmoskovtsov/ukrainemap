@@ -1,4 +1,4 @@
-angular.module('ukrainemapApp').directive('map', ["d3", function (d3) {
+angular.module('taskee').directive('map', ["d3", function (d3) {
 
     function link(scope, element) {
         scope.$watch('data', function (data) {

@@ -2,7 +2,8 @@
     "name": "ukrainemap",
     "version": "0.0.0",
     "dependencies": {
-        "d3": "~3.2.1"
+        "d3": "~3.2.1",
+        "ui.bootstrap": "~0.11.0"
     },
     "devDependencies": {
         "grunt": "~0.4.1",

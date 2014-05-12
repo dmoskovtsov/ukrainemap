@@ -1,33 +1,89 @@
 /* Space out content a bit */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
+
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 19px;
 }
 
 .main {
-    display: flex;
+    display: inline-flex;
 }
 
 .center {
+    /*display: inline;*/
     text-align: center;
+}
+
+.logo-image {
+    margin-bottom: 5px;
+    margin-top: -11px;
+}
+
+.logo-text {
+    padding-left: 10px;
+    /*color: #428bca;*/
+}
+
+.logo-div {
+    display: flex;
+}
+
+.tabs {
+    padding-top: 10px;
+}
+
+.pie-chart {
+    padding: 20px;
+}
+
+.chart-title {
+    padding-bottom: 20px;
+}
+
+.tabbable {
+    margin: 10px;
+    height: 300px;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+}
+
+.nav-tabs {
+    margin: 0;
+}
+
+.tab-content {
+    height: 100%;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+.tab-header {
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.tab-content-padding {
+    padding-left: 10px;
+    padding-right: 10px
 }

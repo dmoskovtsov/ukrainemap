@@ -1,18 +1,43 @@
-<div class="center">
-    <div class="main">
+<div class="header">
+    <ul class="nav nav-pills pull-right">
+        <li><a ng-href="#/about">О проекте</a></li>
+        <li><a ng-href="#/help">Помочь</a></li>
+        <li><a ng-href="#/contacts">Контакты</a></li>
+    </ul>
+    <a class="logo-div"
+       href="#">
+        <h3 class="text-muted logo-text">Taskee</h3>
+    </a>
+</div>
+
+
+<div class="center-block center"
+        >
+    <div class="main"
+         style="background-color: #ffffff;">
         <div ng-controller="TotalController"
-             class="center">
-            <h3>Всего собрано (грн)</h3>
+             class="center pie-chart">
+            <h3 class="text-muted chart-title">Всего собрано (грн)</h3>
             <map data="data"></map>
         </div>
 
         <div ng-controller="ThingsController"
-             class="center">
-            <h3>Закуплено</h3>
+             class="center pie-chart">
+            <h3 class="text-muted chart-title">Закуплено</h3>
             <map data="data"></map>
         </div>
+
     </div>
 </div>
-<h3 class="center">Хочешь помочь?</h3>
+
+<div class="center-block center">
+    <a ng-href="#/help">
+        <button type="button"
+                class="btn btn-primary">Хочу помочь
+        </button>
+    </a>
+</div>
+
+
 
 
