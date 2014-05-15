@@ -1,15 +1,12 @@
 /* Space out content a bit */
-body {
-    padding-top: 20px;
-    padding-bottom: 20px;
+html, body {
+    height: 100%;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
 .footer {
-    padding-left: 15px;
-    padding-right: 15px;
 }
 
 /* Custom page header */
@@ -25,27 +22,9 @@ body {
     padding-bottom: 19px;
 }
 
-.main {
-    display: inline-flex;
-}
-
 .center {
     /*display: inline;*/
     text-align: center;
-}
-
-.logo-image {
-    margin-bottom: 5px;
-    margin-top: -11px;
-}
-
-.logo-text {
-    padding-left: 10px;
-    /*color: #428bca;*/
-}
-
-.logo-div {
-    display: flex;
 }
 
 .tabs {
@@ -86,4 +65,12 @@ body {
 .tab-content-padding {
     padding-left: 10px;
     padding-right: 10px
+}
+
+.information-panel {
+    height: 100%;
+    width: 250px;
+    right: 0;
+    border: 1px solid #ccc;
+    position: absolute;
 }

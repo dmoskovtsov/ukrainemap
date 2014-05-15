@@ -1,41 +1,33 @@
 <div class="header">
-    <ul class="nav nav-pills pull-right">
-        <li><a ng-href="#/about">О проекте</a></li>
-        <li><a ng-href="#/help">Помочь</a></li>
-        <li><a ng-href="#/contacts">Контакты</a></li>
-    </ul>
-    <a class="logo-div"
-       href="#">
+    <a href="#">
         <h3 class="text-muted logo-text">Taskee</h3>
     </a>
 </div>
 
 
-<div class="center-block center"
-        >
-    <div class="main"
-         style="background-color: #ffffff;">
-        <div ng-controller="TotalController"
-             class="center pie-chart">
-            <h3 class="text-muted chart-title">Всего собрано (грн)</h3>
-            <map data="data"></map>
+<div ng-controller="TaskCtrl">
+
+    <div ng-repeat="list in taskList"
+         class="col-md-3">
+
+        <div style="padding-top: 20px; padding-bottom: 20px">
+            <strong>{{list.name}}</strong>
         </div>
 
-        <div ng-controller="ThingsController"
-             class="center pie-chart">
-            <h3 class="text-muted chart-title">Закуплено</h3>
-            <map data="data"></map>
-        </div>
+        <ul class="list-group">
+
+            <li class="list-group-item"
+                ng-click="onTaskSelect(task)"
+                ng-repeat="task in list.tasks"> {{task.name}}
+            </li>
+        </ul>
 
     </div>
 </div>
 
-<div class="center-block center">
-    <a ng-href="#/help">
-        <button type="button"
-                class="btn btn-primary">Хочу помочь
-        </button>
-    </a>
+<div class="information-panel col-md-3"
+     ng-controller="InfoController">
+    {{selectedTask.name}}
 </div>
 
 
